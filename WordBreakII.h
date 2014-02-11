@@ -13,6 +13,54 @@ class Solution {
     
 public:
 
+class Solution {
+public:
+
+    vector<string> wordBreak(string s, unordered_set<string> &dict) {
+
+        if(s==""||dict.size()==0)
+            return vector<string>();
+        
+        // dp[i][j] means when string is at size of i , we have a valid word of length j before it
+        vector<vector<int> > dp(s.size()+1,vector<int>());
+        
+        dp[0].push_back(0); //no valid word before it
+        
+        for(int i = 1; i <= s.size(); ++i){ //cur size
+            for(int j = i; j >= 1 ; --j){ //pre len
+                if( dict.count(s.substr(i-j,j))>0 && dp[i-j].size()>0 ){
+                    dp[i].push_back(j); // record word len
+                }
+            }
+        }
+        
+        return buildVec(s,s.size(),dp);
+    }
+    
+    vector<string> buildVec(const string& str, int len, const vector<vector<int> >& dp){
+        
+        vector<string> v;
+        
+        for(int i = 0; i < dp[len].size(); ++i){
+            int wordLen = dp[len][i];
+            if(wordLen==len){
+                v.push_back(str);
+            }
+            else{
+                vector<string> pres = buildVec(str.substr(0,len-wordLen),len-wordLen,dp);
+                for(int j = 0 ; j < pres.size(); ++j){
+                    v.push_back(pres[j]+" " + str.substr(len-wordLen) );
+                }
+            }
+        }
+        
+        return v;
+    }
+    
+};
+
+
+/*
     vector<string> wordBreak(string s, unordered_set<string> &dict) {
         int N = s.size();
         vector<vector<int> > dp(N+1, vector<int>()); // dp[i][j] means ends at i, previous valid end at j
@@ -41,5 +89,5 @@ public:
 
         return res;
     }
-    
+ */   
 };

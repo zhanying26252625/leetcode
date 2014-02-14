@@ -24,5 +24,28 @@ public:
             }
         }  
     }
+	
+	/*
+	void rotate(vector<vector<int> > &matrix) {
+        int N = matrix.size();
+        if(N<=1)
+            return;
+        
+        for(int i = 0; i < N/2; ++i){
+            int b = i;
+            int e = N-i-1;
+            for(int l = 0; b+l<e ; ++l){
+                int tmp = matrix[b][b+l];
+                matrix[b][b+l] = matrix[e-l][b];
+                matrix[e-l][b] = matrix[e][e-l];
+                matrix[e][e-l] = matrix[b+l][e];
+                matrix[b+l][e] = tmp;
+            }
+        }
+        return;
+        
+        
+    }
+	*/
     
 };

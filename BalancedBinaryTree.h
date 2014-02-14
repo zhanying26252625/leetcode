@@ -13,33 +13,30 @@ For this problem, a height-balanced binary tree is defined as a binary tree in w
  *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
  * };
  */
-class Solution {
+
+ class Solution {
 public:
 
-    bool isBalanced(TreeNode *root, int& h){
+    int isBalancedTree(TreeNode *root){
         
-        if(root==NULL){
-            h=0;
-            return true;
-        }
+        if(root==NULL) return 0;
         
-        int left = 0;
-        if( !isBalanced(root->left,left) )
-            return false;
+        int left = isBalancedTree(root->left);
+        if( -1 == left )
+            return -1;
+        
+        int right = isBalancedTree(root->right);
+        if( -1 == right )
+            return -1;
+
+        if(abs(left-right)>1)
+            return -1;
             
-        int right = 0;
-        if ( !isBalanced(root->right,right) )
-            return false;
-            
-        h = max(left,right)+1;
-        return abs(left-right)<=1;
+        return max(left,right)+1;
     }
 
     bool isBalanced(TreeNode *root) {
-        if(root==NULL)
-            return true;
-        
-        int h = 0;
-        return isBalanced(root,h);
+
+        return isBalancedTree(root)>=0;
     }
 };

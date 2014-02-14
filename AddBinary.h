@@ -32,7 +32,7 @@ public:
             int ai = a[i]-'0';
             int bi = b[i]-'0';
             
-            if( (ai&&bi&&carry) || (ai^bi^carry) )
+            if( (ai^bi^carry)
                 c[i] = '1';
             else
                 c[i] = '0';

@@ -59,7 +59,7 @@ public:
 };
 
 //O(1) space
-
+//iterative
 /**
  * Definition for singly-linked list.
  * struct ListNode {
@@ -68,6 +68,7 @@ public:
  *     ListNode(int x) : val(x), next(NULL) {}
  * };
  */
+ /*
 class Solution {
 public:
     ListNode *deleteDuplicates(ListNode *head) {
@@ -95,3 +96,27 @@ public:
         return dummy.next;
     }
 }
+*/
+
+//recursive
+/*
+  ListNode *deleteDuplicates(ListNode *head) {
+        if (!head || !(head->next) ) return head;
+        
+        if ( head->val != head->next->val) {
+            head->next = deleteDuplicates(head->next);
+            return head;
+        }
+        
+        int v = head->val;
+        ListNode* next = head;
+        while(next&&next->val==v){
+            ListNode* n = next;
+            next = next->next;
+            delete n;
+        }
+        
+        return deleteDuplicates(next);
+        
+  }
+  */

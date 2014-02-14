@@ -28,4 +28,28 @@ public:
         
         return flag ? -res : res;
     }
+	
+	int divide1(int dividend, int divisor) {
+        
+        int neg = 1;
+        if( (dividend>0) ^ (divisor>0) )
+            neg = -1;
+        
+        long long dividend1 = abs((long long)dividend);
+        long long divisor1 = abs((long long)divisor);
+        
+        int ret = 0;
+        
+        while(dividend1>=divisor1){
+            
+            int j = 0;
+            while(dividend1 >= divisor1<<(j+1))
+                ++j;
+            
+            dividend1 -= divisor1<<j;
+            ret += 1<<j;
+        }
+        
+        return ret*neg;
+    }
 };

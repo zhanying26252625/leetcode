@@ -31,19 +31,18 @@ The above binary tree is serialized as "{1,2,3,#,#,4,#,#,5}"
  *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
  * };
  */
+ 
 class Solution {
 public:
 
     TreeNode* first = NULL;
     TreeNode* second = NULL;
     
-    int pre = INT_MIN;
     TreeNode* preNode = NULL;
     
     void recoverTree(TreeNode *root) {
         if(!root||(!root->left&&!root->right))
             return;
-            
         inorder(root);
         swap(first->val,second->val);
     }
@@ -56,7 +55,7 @@ public:
         
         inorder(root->left);
         
-        if(root->val<pre){
+        if(preNode&&root->val<preNode->val){
             if(!first){
                 first = preNode;
             }
@@ -64,10 +63,10 @@ public:
         }
         
         preNode = root;
-        pre = root->val;
         
         inorder(root->right);
     }
     
     
+};
 };

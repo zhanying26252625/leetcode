@@ -24,8 +24,11 @@ Note: Recursive solution is trivial, could you do it iteratively?
  *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
  * };
  */
-class Solution {
+ 
+ class Solution {
 public:
+    //O(N) space
+    /*
     vector<int> postorderTraversal(TreeNode *root) {
              
         vector<int> v;
@@ -60,4 +63,41 @@ public:
         
         return v;    
     }
+    */
+    
+    vector<int> postorderTraversal(TreeNode *root) {
+             
+        vector<int> v;
+        if(root==NULL)
+            return v;
+            
+        stack<TreeNode*> s;
+        TreeNode * curNode = root;
+        TreeNode* preNode = NULL;
+        
+        while(curNode||!s.empty()){
+            
+            if(curNode){
+                s.push(curNode);
+                curNode=curNode->left;
+            }
+            else{
+                curNode = s.top();
+                s.pop();
+                if( curNode->right==NULL||preNode==curNode->right ){ //if right is visited
+                    v.push_back(curNode->val);
+                    preNode = curNode;
+                    curNode = NULL;
+                }
+                else{
+                    s.push(curNode);
+                    curNode = curNode->right;
+                }
+            }
+            
+        }
+        
+        return v;    
+    }
+    
 };

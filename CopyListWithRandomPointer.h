@@ -16,6 +16,34 @@ class Solution {
 public:
 
     RandomListNode *copyRandomList(RandomListNode *head) {
+        return copyRandomList2(head);
+    }
+    
+    //O(1) space, very tricky
+    RandomListNode *copyRandomList2(RandomListNode *head) {
+        //stage1
+        for (RandomListNode *cur = head; cur; cur = cur->next->next) {
+            RandomListNode *newNode = new RandomListNode(cur->label);
+            newNode->next = cur->next;
+            cur->next = newNode;
+        }
+        //stage2
+        for (RandomListNode *cur = head; cur; cur = cur->next->next)
+            if (cur->random)
+                cur->next->random = cur->random->next;
+        //stage3
+        RandomListNode dummy(0), *curNew = &dummy;
+        for (RandomListNode *cur = head; cur; cur = cur->next) {
+            curNew->next = cur->next;
+            curNew = curNew->next;
+            cur->next = cur->next->next;
+        }
+        return dummy.next;
+        
+    }
+    
+    //O(N) space
+    RandomListNode *copyRandomList1(RandomListNode *head) {
         
         if(!head)
             return NULL;
@@ -41,5 +69,4 @@ public:
         return cache[head];
         
     }
-    
 };

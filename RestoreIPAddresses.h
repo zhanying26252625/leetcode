@@ -6,61 +6,49 @@ Given "25525511135",
 
 return ["255.255.11.135", "255.255.111.35"]. (Order does not matter)
 */
-
 class Solution {
 public:
 
-    vector<string> v;
-    
     vector<string> restoreIpAddresses(string s) {
-        
-        if(s.size()< 4 || s.size() > 12)
+        vector<string> v;
+        if(s.size()<4||s.size()>12)
             return v;
-            
-        string curStr;
-        restoreIpAddresses(s,curStr,0);
-        
+        vector<string> cur;   
+        restoreIpAddresses(v,s,cur);
         return v;
     }
     
-    bool isValid(string num){
+    void restoreIpAddresses(vector<string>& v, string s, vector<string>& cur){
         
-        if(num=="")
-            return false;
-            
-        int n = atoi(num.c_str());
-        if(num.size()==1){
-            return n>=0&&n<=9;
-        }
-        else if(num.size()==2){
-            return n>=10&&n<=99;
-        }
-        else if(num.size()==3){
-            return n>=100&&n<=255;
-        }
-        
-        return false;
-        
-    }
-    
-    void restoreIpAddresses(string s, string curStr, int index){
-        
-        if(index==4 && s=="" ){
-            v.push_back(curStr.substr(1));
+        if(cur.size()==4&&s==""){
+            stringstream ss;
+            for(int i = 0 ; i < cur.size(); ++i)
+                ss<<'.'<<cur[i];
+            v.push_back(ss.str().substr(1));
             return;
         }
         
-        if(s=="")
-            return;
+        if(cur.size()==4) return;
         
-        for(int i = 1; i <= 3 && i <= s.size(); ++i){
-            string num = s.substr(0,i);
-            if( isValid(num)){
-                restoreIpAddresses(s.substr(i),curStr+"."+num,index+1);
+        int len = std::min(3,(int)s.size());
+        for(int i = 1; i <= len; ++i){
+            string prefix = s.substr(0,i);
+            if(isValid(prefix)){
+                cur.push_back(prefix);
+                restoreIpAddresses(v,s.substr(i),cur);
+                cur.pop_back();
             }
         }
-            
     }
+    
+    bool isValid(string& s){
+        if(s=="") return false;
+        if(s.size()==1) return s[0]>='0'&&s[0]<='9';
+        if(s.size()==2) return atoi(s.c_str())>=10;
+        if(s.size()==3) return atoi(s.c_str())>=100&&atoi(s.c_str())<=255;
+        return false;
+    }
+    
 };
 
 

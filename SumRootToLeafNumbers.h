@@ -25,72 +25,63 @@ Return the sum = 12 + 13 = 25.
  *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
  * };
  */
+ 
+ 
+ /**
+ * Definition for binary tree
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
+ * };
+ */
+
 class Solution {
 public:
-
-    void sumNumbersHelper(TreeNode *root, vector<int>& path, int& total) {
-        
-        path.push_back(root->val);
-        
-        if(root->left==NULL&&root->right==NULL){
-            if(path.size()!=0){
-                int sum = 0;
-                for(int i =0 ;i<path.size();++i){
-                    sum *= 10;
-                    sum += path[i];
-                }
-                total += sum;
-            }
-            
-            path.pop_back();
-            return;
-        }
-        
-        if(root->left)
-            sumNumbersHelper(root->left,path,total); 
-        if(root->right)
-            sumNumbersHelper(root->right,path,total);
-            
-        path.pop_back();
+    int sumNumbers(TreeNode *root) {
+        return sumNumbers_1(root);
     }
     
-    int sumNumbers(TreeNode *root) {
-        
-        if(root==NULL)
-            return 0;
-        
-        vector<int> path;
-        int total = 0;
-        sumNumbersHelper(root,path,total);
-        
-        return total;
+    //recursive
+    int sumNumbers_1(TreeNode *root) {
+        int sum = 0;
+        sumNumbersRe(root, 0, sum);
+        return sum;
     }
-};
-
-/*
-class Solution {
-public:
-
-    int ans;
-    void dfs(int cnt, TreeNode *rt) {
-        cnt = 10 *cnt + rt->val;
-        if (rt->left == NULL && rt->right == NULL) {
-            ans += cnt;
+    
+    void sumNumbersRe(TreeNode *node, int num, int &sum) {
+        if (!node) return;
+        num = num * 10 + node->val;
+        if (!node->left && !node->right) { 
+            sum += num;
             return;
         }
-        if (rt->left != NULL)
-            dfs (cnt, rt->left);
-        if (rt->right != NULL)
-            dfs (cnt, rt->right);
+        sumNumbersRe(node->left, num, sum);
+        sumNumbersRe(node->right, num, sum);
     }
-    int sumNumbers(TreeNode *root) {
-        // Start typing your C/C++ solution below
-        // DO NOT write int main() function
-        if (root == NULL)
-            return 0;
-        ans = 0;
-        dfs(0, root);
-        return ans;
+    
+    //iterative
+    int sumNumbers_2(TreeNode *root) {
+        if (!root) return 0;
+        int res = 0;
+        queue<pair<TreeNode *, int>> q;
+        q.push(make_pair(root, 0));
+        while(!q.empty())
+        {
+            TreeNode *node = q.front().first;
+            int sum = q.front().second * 10 + node->val;
+            q.pop();
+            if (!node->left && !node->right)
+            {
+                res += sum;
+                continue;
+            }
+            if (node->left)
+                q.push(make_pair(node->left, sum));
+            if (node->right)
+                q.push(make_pair(node->right, sum));
+        }
+        return res;
     }
 };
-*/

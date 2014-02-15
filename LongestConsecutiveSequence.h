@@ -10,20 +10,38 @@ Your algorithm should run in O(n) complexity.
 
 class Solution {
 public:
+    //O(N)
     int longestConsecutive(vector<int> &num) {
-        unordered_set<int> s;
-        int res = 0;
-        for (int i = 0; i < num.size(); ++i)
-            s.insert(num[i]);
-        for (int i = 0; i < num.size() && !s.empty(); ++i)
-        {
-            int upper = num[i], lower = num[i];
-            while (s.find(upper+1) != s.end())
-                s.erase(++upper);
-            while (s.find(lower-1) != s.end())
-                s.erase(--lower);
-            res = max(res, upper - lower + 1);
+	
+        if(num.size()<=1)
+            return num.size();
+        
+        unordered_set<int> hash;
+        for(int i = 0 ; i < num.size(); ++i){
+            hash.insert(num[i]);
         }
-        return res;
+        
+        int max = 0;
+        
+        while(!hash.empty()){
+            int m = *(hash.begin());
+            hash.erase(m);
+            int l = m-1;
+            int h = m+1;
+            while(hash.count(l)>0){
+                hash.erase(l);
+                --l;
+            }
+            while(hash.count(h)>0){
+                hash.erase(h);
+                ++h;
+            }
+            
+            max = std::max(max,h-l-1);
+        }
+        
+        return max;
+        
+        
     }
 };

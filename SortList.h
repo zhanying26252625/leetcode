@@ -10,47 +10,53 @@ Sort a linked list in O(n log n) time using constant space complexity.
  *     ListNode(int x) : val(x), next(NULL) {}
  * };
  */
+ 
+ /**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode(int x) : val(x), next(NULL) {}
+ * };
+ */
+
+
 class Solution {
 public:
-
     ListNode *sortList(ListNode *head) {
-        if (NULL == head || NULL == head->next) return head;
-        ListNode* front;
-        ListNode* back;
-        frontBackSplit(head, front, back);
-        front = sortList(front);
-        back = sortList(back);
-        return sortedMerge1(front, back);
+        return mergetSort(head);    
     }
 
-    void frontBackSplit(ListNode* head, ListNode*& front, ListNode*& back) {
-        front = head;
-        back = NULL;
-        if (NULL == front) return;
-        ListNode* preBack;
-        back = front;
-        ListNode* tail = front;
-        while (NULL != tail) {
-            preBack = back;
-            back = back->next;
-            tail = (tail->next) ? (tail->next)->next : NULL;
-        }
-        preBack->next = NULL;
+    ListNode *mergetSort(ListNode * head) {
+        if (head == NULL || head->next == NULL) return head;
+        ListNode * frontHead = head, * backHead = split(head);
+        frontHead = mergetSort(frontHead);
+        backHead = mergetSort(backHead);
+        return merge(frontHead, backHead);
     }
 
-    ListNode* sortedMerge1(ListNode* front, ListNode* back) {
-        if (NULL == front) return back;
-        if (NULL == back) return front;
-        ListNode* head;
-        if (front->val <= back->val) {
-            head = front;
-            front->next = sortedMerge1(front->next, back);
-        }
-        else {
-            head = back;
-            back->next = sortedMerge1(front, back->next);
-        }
+    ListNode * split(ListNode * head) {
+        ListNode * fastNode = head, * slowNode = head;
+        while (fastNode->next != NULL && fastNode->next->next != NULL) fastNode = fastNode->next->next, slowNode = slowNode->next;
+        head = slowNode->next;
+        slowNode->next = NULL;
         return head;
     }
-    
+
+    ListNode * merge(ListNode * frontHead, ListNode * backHead) {
+        ListNode * head = new ListNode(-1), * curNode = head;
+        while (frontHead != NULL || backHead != NULL) {
+            if (backHead == NULL || (frontHead != NULL && frontHead->val <= backHead->val)) curNode->next = frontHead, frontHead = frontHead->next;
+            else curNode->next = backHead, backHead = backHead->next;
+            curNode = curNode->next;
+        }
+        return deleteNode(head);
+    }
+
+    ListNode * deleteNode(ListNode * curNode) {
+        ListNode * toDel = curNode;
+        curNode = curNode->next;
+        delete toDel;
+        return curNode;
+    }
 };

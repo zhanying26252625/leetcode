@@ -51,9 +51,12 @@ public:
 	
 	
 	   //state machine
-     bool isNumber1(const char *s) {
-        enum InputType {INVALID, SPACE, SIGN, DIGIT, DOT, EXPONENT};
-        int transitionTable[][SPACEEND] = 
+	   bool isNumber1(const char *s) {
+        if(*s==0) return false;
+        enum Action {INVALID=0, SPACE=1, SIGN=2, DIGIT=3, DOT=4, EXPONENT=5};
+        const int N = 6;
+        //[state][action]
+        int transTable[][N] = 
         { /* 0   1   2   3   4   5  */
              0,  1,  2,  3,  4,  0, // 0: INVALID
              0,  1,  2,  3,  4,  0, // 1: SPACE
@@ -66,25 +69,26 @@ public:
              0,  6,  0,  8,  0,  0, // 8: END WITH SPACE OR DIGIT
         };
         
-        InputType last = INVALID;
-        while (*s != '\0')
-        {
-            InputType state = INVALID;
+        int state = 0;
+        while(*s){
+            Action act = INVALID;
             if (*s == ' ')
-                state = SPACE;
-            else if (isdigit(*s))
-                state = DIGIT;
+                act = SPACE;
             else if (*s == '+' || *s == '-')
-                state = SIGN;
-            else if (*s == 'e')
-                state = EXPONENT;
+                act = SIGN;
+            else if (isdigit(*s))
+                act = DIGIT;
             else if (*s == '.')
-                state = DOT;
-            last = (InputType) transitionTable[last][state];
-            if (last == INVALID) return false;
+                act = DOT;
+            else if (*s == 'e')
+                act = EXPONENT;
+            state = transTable[state][act];
+            if (state == 0) return false;
             s++;
         }
-        bool validFinal[] = {0, 0, 0, 1, 0, 0, 1, 1, 1};
-        return validFinal[last];
+        
+        bool validStates[]={0,0,0,1,0,0,1,1,1};
+        return validStates[state];
     }
+	
 };

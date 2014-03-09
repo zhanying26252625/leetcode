@@ -62,44 +62,31 @@ public:
     */
     
     // Knuth-Morris-Pratt Algorithm (KMP), takes O(n+m)
-    char * strStr3(char * haystack, int n, char * needle, int m) {
-        vector<int> fs = build(needle, m);
+    char *strStr(char *haystack, char *needle) {
+        if (haystack == NULL || needle == NULL) return NULL;
+        int N = strlen(haystack);
+        int M = strlen(needle);
+        if(M==0) return haystack;
+        vector<int> overlay(M,-1);
+        //initialize overlay array
+        for(int i = 1; i < M; ++i){
+            int pre = overlay[i-1];
+            while(pre>=0&&needle[pre+1]!=needle[i])
+                pre=overlay[pre];
+            if(needle[pre+1]==needle[i]) overlay[i]=pre+1;
+        }
+        //search
         int i = 0, j = 0;
-        int step = 10000;
-        while (j < n) {
-            if (j == n) break;
-            if (haystack[j] == needle[i]) {
-                i++;
-                j++;
-                if (i == m) return haystack+j-m;
+        while(i<N){
+            if(haystack[i]==needle[j]){
+                ++i; ++j;
+                if(j==M) return haystack+i-M;
             }
-            else if (i > 0) i = fs[i];
-            else j++;
-            step--;
-            if (step == 0) break;
+            else{
+                if(j==0) ++i;
+                else j = overlay[j-1] + 1;
+            }
         }
         return NULL;
-    }
-
-    vector<int> build(char * needle, int m) {
-        vector<int> fs(m+1, 0);
-        for (int i = 2; i <= m; i++) {
-            int j = fs[i-1];
-            while (true) {
-                if (needle[j] == needle[i-1]) {
-                    fs[i] = j+1;
-                    break;
-                }
-
-                if (j == 0) {
-                    fs[i] = 0;
-                    break;
-                }
-
-                j = fs[j];
-            }
-        }
-
-        return fs;
     }
 };

@@ -1,3 +1,7 @@
+******2Sum.h******
+
+-----------------------------------------------
+
 /*
 Given an array of integers, find two numbers such that they add up to a specific target number.
 
@@ -55,7 +59,9 @@ public:
     
 };
 
-//-----------------------------
+******3Sum.h******
+
+-----------------------------------------------
 
 /*
 Given an array S of n integers, are there elements a, b, c in S such that a + b + c = 0? Find all unique triplets in the array which gives the sum of zero.
@@ -101,7 +107,9 @@ public:
     }
 };
 
-//-----------------------------
+******3SumCloset.h******
+
+-----------------------------------------------
 
 /*
 Given an array S of n integers, find three integers in S such that the sum is closest to a given number, target. Return the sum of the three integers. You may assume that each input would have exactly one solution.
@@ -123,7 +131,7 @@ public:
             while (i < j) {
                 int sum = num[i]+num[j]+num[k];
                 if (sum == target) return sum;
-                if (abs(sum-target) < abs(res-target)) res = sum;
+                if (res==INT_MAX||abs(sum-target) < abs(res-target)) res = sum;
                 if (sum > target) j--;
                 else i++;
             }
@@ -133,7 +141,9 @@ public:
     
 };
 
-//-----------------------------
+******4Sum.h******
+
+-----------------------------------------------
 
 /*
 Given an array S of n integers, are there elements a, b, c, and d in S such that a + b + c + d = target? Find all unique quadruplets in the array which gives the sum of target.
@@ -184,7 +194,9 @@ public:
     }
 };
 
-//-----------------------------
+******AddBinary.h******
+
+-----------------------------------------------
 
 /*
 Given two binary strings, return their sum (also a binary string).
@@ -241,7 +253,9 @@ public:
     
 };
 
-//-----------------------------
+******AddTwoNumbers.h******
+
+-----------------------------------------------
 
 /*
 You are given two linked lists representing two non-negative numbers. The digits are stored in reverse order and each of their nodes contain a single digit. Add the two numbers and return it as a linked list.
@@ -294,7 +308,9 @@ public:
     }
 };
 
-//-----------------------------
+******Anagrams.h******
+
+-----------------------------------------------
 
 /*
 Given an array of strings, return all groups of strings that are anagrams.
@@ -326,7 +342,9 @@ public:
     }
 };
 
-//-----------------------------
+******Atoi.h******
+
+-----------------------------------------------
 
 /*
 Implement atoi to convert a string to an integer.
@@ -371,7 +389,9 @@ public:
     
 };
 
-//-----------------------------
+******BalancedBinaryTree.h******
+
+-----------------------------------------------
 
 /*
 Given a binary tree, determine if it is height-balanced.
@@ -416,7 +436,9 @@ public:
     }
 };
 
-//-----------------------------
+******BestTimeToBuyAndSellStock.h******
+
+-----------------------------------------------
 
 /*
 Say you have an array for which the ith element is the price of a given stock on day i.
@@ -445,7 +467,9 @@ public:
     }
 };
 
-//-----------------------------
+******BestTimeToBuyAndSellStockII.h******
+
+-----------------------------------------------
 
 /*
 Say you have an array for which the ith element is the price of a given stock on day i.
@@ -468,7 +492,9 @@ public:
     
 };
 
-//-----------------------------
+******BestTimeToBuyAndSellStockIII.h******
+
+-----------------------------------------------
 
 /*
 Say you have an array for which the ith element is the price of a given stock on day i.
@@ -531,7 +557,9 @@ public:
 };
 
 
-//-----------------------------
+******BinaryTreeInorderTraversal.h******
+
+-----------------------------------------------
 
 /*
 Given a binary tree, return the inorder traversal of its nodes' values.
@@ -610,7 +638,9 @@ public:
 
 
 
-//-----------------------------
+******BinaryTreeLevelOrderTraversal.h******
+
+-----------------------------------------------
 
 /*
 Given a binary tree, return the level order traversal of its nodes' values. (ie, from left to right, level by level).
@@ -684,7 +714,9 @@ public:
 };
 
 
-//-----------------------------
+******BinaryTreeLevelOrderTraversalII.h******
+
+-----------------------------------------------
 
 /*
 Given a binary tree, return the bottom-up level order traversal of its nodes' values. (ie, from left to right, level by level from leaf to root).
@@ -765,7 +797,9 @@ public:
     }
 };
 
-//-----------------------------
+******BinaryTreeMaximumPathSum.h******
+
+-----------------------------------------------
 
 /*
 Given a binary tree, find the maximum path sum.
@@ -839,7 +873,9 @@ public:
 };
 
 
-//-----------------------------
+******BinaryTreePostorderTraversal.h******
+
+-----------------------------------------------
 
 /*
 Given a binary tree, return the postorder traversal of its nodes' values.
@@ -945,7 +981,9 @@ public:
     
 };
 
-//-----------------------------
+******BinaryTreePreorderTraversal.h******
+
+-----------------------------------------------
 
 /*
 Given a binary tree, return the preorder traversal of its nodes' values.
@@ -1000,7 +1038,9 @@ public:
     }
 };
 
-//-----------------------------
+******BinaryTreeZigzagLevelOrderTraversal.h******
+
+-----------------------------------------------
 
 /*
 Given a binary tree, return the zigzag level order traversal of its nodes' values. (ie, from left to right, then right to left for the next level and alternate between).
@@ -1065,9 +1105,40 @@ public:
         
         return vv;
     }
+
+
+    /*
+void printLevelOrderZigZag(BinaryTree *root) {
+  stack<BinaryTree*> currentLevel, nextLevel;
+  bool leftToRight = true;
+  currentLevel.push(root);
+  while (!currentLevel.empty()) {
+    BinaryTree *currNode = currentLevel.top();
+    currentLevel.pop();
+    if (currNode) {
+      cout << currNode->data << " ";
+      if (leftToRight) {
+        nextLevel.push(currNode->left);
+        nextLevel.push(currNode->right);
+      } else {
+        nextLevel.push(currNode->right);
+        nextLevel.push(currNode->left);
+      }
+    }
+    if (currentLevel.empty()) {
+      cout << endl;
+      leftToRight = !leftToRight;
+      swap(currentLevel, nextLevel);
+    }
+  }
+}
+
+    */
 };
 
-//-----------------------------
+******Candy.h******
+
+-----------------------------------------------
 
 /*
 There are N children standing in a line. Each child is assigned a rating value.
@@ -1108,7 +1179,9 @@ public:
     
 };
 
-//-----------------------------
+******ClimbingStairs.h******
+
+-----------------------------------------------
 
 /*
 You are climbing a stair case. It takes n steps to reach to the top.
@@ -1146,7 +1219,9 @@ public:
     }
 */
 
-//-----------------------------
+******CloneGraph.h******
+
+-----------------------------------------------
 
 /*
 Clone an undirected graph. Each node in the graph contains a label and a list of its neighbors.
@@ -1221,7 +1296,9 @@ public:
     
 };
 
-//-----------------------------
+******CombinationSum.h******
+
+-----------------------------------------------
 
 /*
 Given a set of candidate numbers (C) and a target number (T), find all unique combinations in C where the candidate numbers sums to T.
@@ -1272,7 +1349,9 @@ public:
     
 };
 
-//-----------------------------
+******CombinationSumII.h******
+
+-----------------------------------------------
 
 /*
 Given a collection of candidate numbers (C) and a target number (T), find all unique combinations in C where the candidate numbers sums to T.
@@ -1338,7 +1417,9 @@ public:
     
 };
 
-//-----------------------------
+******Combinations.h******
+
+-----------------------------------------------
 
 /*
 Given two integers n and k, return all possible combinations of k numbers out of 1 ... n.
@@ -1410,6 +1491,37 @@ public:
             
         combine(vv,cur,index+1,v,k);
     }
+
+    int nextSameBits(int bits){
+        int firstBit = bits&(~(bits-1));
+        int big = firstBit + bits;
+        int remains = ((big^bits)>>2) / firstBit;
+        return big + remains;
+    }
+
+    //iteratively by using bits manipulation
+    void combine3(vector<vector<int> >* vv , vector<int>& cur,int k){
+        int begin = 0;
+        int end = 0;
+        for(int i = 0 ; i < k ; ++i ) begin |= 1<<i; 
+        end = begin << (cur.size()-k) ;
+        
+        while(begin <= end){
+            int bits = begin;
+ 
+            vector<int> v;
+            while(bits){
+                int i = 0; 
+                while( 1<<i != (bits&(~(bits-1))) ) ++i;            
+                bits = bits & (bits-1);
+                v.push_back(cur[i]);
+            }
+            vv->push_back(v);
+            
+            begin = nextSameBits(begin);
+        }
+ 
+    }
     
 };
 
@@ -1427,7 +1539,9 @@ public:
 
 
 
-//-----------------------------
+******ConstructBinaryTreeFromInorderAndPostorder.h******
+
+-----------------------------------------------
 
 /*
 Given preorder and inorder traversal of a tree, construct the binary tree.
@@ -1474,7 +1588,9 @@ public:
     }
 };
 
-//-----------------------------
+******ConstructBinaryTreeFromPreorderAndInorder.h******
+
+-----------------------------------------------
 
 /*
 Given preorder and inorder traversal of a tree, construct the binary tree.
@@ -1530,7 +1646,9 @@ public:
     }
 };
 
-//-----------------------------
+******ContainerWithMostWater.h******
+
+-----------------------------------------------
 
 /*
 Given n non-negative integers a1, a2, ..., an, where each represents a point at coordinate (i, ai). n vertical lines are drawn such that the two endpoints of line i is at (i, ai) and (i, 0). Find two lines, which together with x-axis forms a container, such that the container contains the most water.
@@ -1557,7 +1675,9 @@ public:
     }
 };
 
-//-----------------------------
+******ConvertSortedArrayToBinarySearchTree.h******
+
+-----------------------------------------------
 
 /*
 Given an array where elements are sorted in ascending order, convert it to a height balanced BST.
@@ -1591,7 +1711,9 @@ public:
     
 };
 
-//-----------------------------
+******ConvertSortedListToBinarySearchTree.h******
+
+-----------------------------------------------
 
 /*
 Given a singly linked list where elements are sorted in ascending order, convert it to a height balanced BST.
@@ -1658,7 +1780,9 @@ public:
 
 
 
-//-----------------------------
+******CopyListWithRandomPointer.h******
+
+-----------------------------------------------
 
 /*
 A linked list is given such that each node contains an additional random pointer which could point to any node in the list or null.
@@ -1733,7 +1857,9 @@ public:
     }
 };
 
-//-----------------------------
+******CountAndSay.h******
+
+-----------------------------------------------
 
 /*
 The count-and-say sequence is the sequence of integers beginning as follows:
@@ -1777,7 +1903,9 @@ public:
     }
 };
 
-//-----------------------------
+******DecodeWays.h******
+
+-----------------------------------------------
 
 /*
 A message containing letters from A-Z is being encoded to numbers using the following mapping:
@@ -1811,10 +1939,30 @@ public:
         
         return ways[s.size()];
     }
+
+    /*
+    int numDecodings(string s) {
+        if(s==""||s[0]=='0')
+            return 0;
+        int f0 = 1;
+        int f1 = 1;
+        for(int i = 1; i < s.size(); ++i){
+            int f2 = 0;
+            if(s[i]>'0') f2 += f1;
+            if(s[i-1]=='1'||(s[i-1]=='2'&&s[i]<='6')) f2 += f0;
+            f0 = f1;
+            f1 = f2;
+        }
+        
+        return f1;
+    }
+    */
     
 };
 
-//-----------------------------
+******DistinctSubsequences.h******
+
+-----------------------------------------------
 
 /*
 Given a string S and a string T, count the number of distinct subsequences of T in S.
@@ -1854,7 +2002,9 @@ public:
     
 };
 
-//-----------------------------
+******DivideTwoIntegers.h******
+
+-----------------------------------------------
 
 /*
 Divide two integers without using multiplication, division and mod operator.
@@ -1912,7 +2062,9 @@ public:
     }
 };
 
-//-----------------------------
+******EditDistance.h******
+
+-----------------------------------------------
 
 /*
 Given two words word1 and word2, find the minimum number of steps required to convert word1 to word2. (each operation is counted as 1 step.)
@@ -1955,7 +2107,9 @@ public:
     }
 };
 
-//-----------------------------
+******EvaluateReversePolishNotation.h******
+
+-----------------------------------------------
 
 /*
 Evaluate the value of an arithmetic expression in Reverse Polish Notation.
@@ -2007,7 +2161,9 @@ public:
     
 };
 
-//-----------------------------
+******FirstMissingPositive.h******
+
+-----------------------------------------------
 
 /*
 Given an unsorted integer array, find the first missing positive integer.
@@ -2039,7 +2195,9 @@ public:
     
 };
 
-//-----------------------------
+******FlattenBinaryTreeToLinkedList.h******
+
+-----------------------------------------------
 
 /*
 Given a binary tree, flatten it to a linked list in-place.
@@ -2121,7 +2279,9 @@ public:
 
 
 
-//-----------------------------
+******GasStation.h******
+
+-----------------------------------------------
 
 /*
 There are N gas stations along a circular route, where the amount of gas at station i is gas[i].
@@ -2190,7 +2350,9 @@ public:
     
 };
 
-//-----------------------------
+******GenerateParentheses.h******
+
+-----------------------------------------------
 
 /*
 Generate Parentheses
@@ -2231,7 +2393,9 @@ public:
     
 };
 
-//-----------------------------
+******GrayCode.h******
+
+-----------------------------------------------
 
 /*
 The gray code is a binary numeral system where two successive values differ in only one bit.
@@ -2277,7 +2441,9 @@ public:
     }
 };
 
-//-----------------------------
+******InsertInterval.h******
+
+-----------------------------------------------
 
 /*
 Given a set of non-overlapping intervals, insert a new interval into the intervals (merge if necessary).
@@ -2361,7 +2527,9 @@ public:
     
 };
 
-//-----------------------------
+******InsertIntervalMergeIntervals.h******
+
+-----------------------------------------------
 
 /*
 Given a collection of intervals, merge all overlapping intervals.
@@ -2437,7 +2605,9 @@ public:
 
 
 
-//-----------------------------
+******InsertionSortList.h******
+
+-----------------------------------------------
 
 /*
 Sort a linked list using insertion sort.
@@ -2479,7 +2649,9 @@ public:
     
 };
 
-//-----------------------------
+******IntegerToRoman.h******
+
+-----------------------------------------------
 
 /*
 Given an integer, convert it to a roman numeral.
@@ -2515,7 +2687,9 @@ public:
     }
 };
 
-//-----------------------------
+******InterleavingString.h******
+
+-----------------------------------------------
 
 /*
 Given s1, s2, s3, find whether s3 is formed by the interleaving of s1 and s2.
@@ -2577,7 +2751,9 @@ public:
 };
 
 
-//-----------------------------
+******JumpGame.h******
+
+-----------------------------------------------
 
 /*
 Given an array of non-negative integers, you are initially positioned at the first index of the array.
@@ -2657,7 +2833,9 @@ public:
 
 
 
-//-----------------------------
+******JumpGameII.h******
+
+-----------------------------------------------
 
 /*
 Given an array of non-negative integers, you are initially positioned at the first index of the array.
@@ -2690,7 +2868,9 @@ public:
     
 };
 
-//-----------------------------
+******LRUCache.h******
+
+-----------------------------------------------
 
 /*
 Design and implement a data structure for Least Recently Used (LRU) cache. It should support the following operations: get and set.
@@ -2742,7 +2922,9 @@ public:
     
 };
 
-//-----------------------------
+******LargestRectangleInHistogram.h******
+
+-----------------------------------------------
 
 /*
 Given n non-negative integers representing the histogram's bar height where the width of each bar is 1, find the area of largest rectangle in the histogram.
@@ -2822,7 +3004,9 @@ public:
 
 
 
-//-----------------------------
+******LengthOfLastWord.h******
+
+-----------------------------------------------
 
 /*
 Given a string s consists of upper/lower-case alphabets and empty space characters ' ', return the length of last word in the string.
@@ -2852,7 +3036,9 @@ public:
     
 };
 
-//-----------------------------
+******LetterCombinationsOfPhoneNumber.h******
+
+-----------------------------------------------
 
 /*
 Given a digit string, return all possible letter combinations that the number could represent.
@@ -2893,7 +3079,9 @@ public:
 const string Solution::keypad[8] = { "abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz" };
 
 
-//-----------------------------
+******LinkedListCycle.h******
+
+-----------------------------------------------
 
 /*
 Given a linked list, determine if it has a cycle in it.
@@ -2923,7 +3111,9 @@ public:
     }
 };
 
-//-----------------------------
+******LinkedListCycleII.h******
+
+-----------------------------------------------
 
 /*
 Given a linked list, return the node where the cycle begins. If there is no cycle, return null.
@@ -2961,7 +3151,9 @@ public:
     }
 };
 
-//-----------------------------
+******LongestCommonPrefix.h******
+
+-----------------------------------------------
 
 /*
 Write a function to find the longest common prefix string amongst an array of strings.
@@ -2993,7 +3185,9 @@ public:
     
 };
 
-//-----------------------------
+******LongestConsecutiveSequence.h******
+
+-----------------------------------------------
 
 /*
 Given an unsorted array of integers, find the length of the longest consecutive elements sequence.
@@ -3043,7 +3237,9 @@ public:
     }
 };
 
-//-----------------------------
+******LongestPalindromicSubstring.h******
+
+-----------------------------------------------
 
 /*
 Given a string S, find the longest palindromic substring in S. You may assume that the maximum length of S is 1000, and there exists one unique longest palindromic substring.
@@ -3139,10 +3335,62 @@ public:
 
         return s.substr(res / 2 - (dp[res] - 1) / 2, dp[res] - 1);
     }
+
+    /*
+    //manacher's O(N)  my implementation
+    string longestPalindrome2(string s) {
+        //pad the origin string
+        stringstream ss;
+        ss<<"^#";
+        for(int i =0 ; i<s.size(); ++i)
+            ss<<s[i]<<"#";
+        ss<<"$";
+        string text = ss.str();
+
+        //iteratively find longest substring
+        vector<int> lens(text.size(),1);
+        int c = 1; //center
+        int r = 1; //right-side
+        for(int i = 2 ; i < text.size(); ++i){
+            int j = 2*c-i;
+            int l = min(lens[j],max(0,r-i));
+            while(i-l>=0&&i+l<text.size()&&text[i-l]==text[i+l]) ++l;
+            lens[i] = l;
+
+            if(i+l>=c){
+                c = i;
+                r = i + l - 1;
+            }
+        }
+
+        //find max len
+        int radius = 0;
+        int center = 0;
+        for(int i = 0 ; i < lens.size(); ++i){
+            if(lens[i] > radius){
+                center = i;
+                radius = lens[i];
+            }
+        }
+        
+        //trim 
+        string subs = text.substr(center-radius+1,radius*2-1);
+        //cout << subs << endl;
+        stringstream ss2;
+        for(int i =0 ; i<subs.size(); ++i){
+            if(subs[i]!='#'&&subs[i]!='^'&&subs[i]!='$') ss2<<subs[i];  
+        }
+        string retStr = ss2.str();
+        return retStr;
+    }
+
+    */
 };
 
 
-//-----------------------------
+******LongestSubstringWithoutRepeatingCharacters.h******
+
+-----------------------------------------------
 
 /*
 Given a string, find the length of the longest substring without repeating characters. For example, the longest substring without repeating letters for "abcabcbb" is "abc", which the length is 3. For "bbbbb" the longest substring is "b", with the length of 1.
@@ -3180,7 +3428,9 @@ public:
     
 };
 
-//-----------------------------
+******LongestValidParentheses.h******
+
+-----------------------------------------------
 
 /*
 Given a string containing just the characters '(' and ')', find the length of the longest valid (well-formed) parentheses substring.
@@ -3233,7 +3483,9 @@ public:
     }
 };
 
-//-----------------------------
+******MaxPointsOnALine.h******
+
+-----------------------------------------------
 
 /*
 Given n points on a 2D plane, find the maximum number of points that lie on the same straight line.
@@ -3306,7 +3558,9 @@ public:
     
 };
 
-//-----------------------------
+******MaximalRectangle.h******
+
+-----------------------------------------------
 
 /*
 Given a 2D binary matrix filled with 0's and 1's, find the largest rectangle containing all ones and return its area.
@@ -3404,7 +3658,9 @@ public:
     
 };
 
-//-----------------------------
+******MaximumDepthOfBinaryTree.h******
+
+-----------------------------------------------
 
 /*
 Given a binary tree, find its maximum depth.
@@ -3436,7 +3692,9 @@ public:
     }
 };
 
-//-----------------------------
+******MedianOfTwoSortedArrays.h******
+
+-----------------------------------------------
 
 /*
 There are two sorted arrays A and B of size m and n respectively. Find the median of the two sorted arrays. The overall run time complexity should be O(log (m+n)).
@@ -3485,7 +3743,9 @@ public:
 
 
 
-//-----------------------------
+******MergeIntervals.h******
+
+-----------------------------------------------
 
 /*
 Given a collection of intervals, merge all overlapping intervals.
@@ -3549,6 +3809,61 @@ public:
 };
 
 
+/*
+/**
+ * Definition for an interval.
+ * struct Interval {
+ *     int start;
+ *     int end;
+ *     Interval() : start(0), end(0) {}
+ *     Interval(int s, int e) : start(s), end(e) {}
+ * };
+ */
+class Solution {
+public:
+    struct MyComp{
+        
+        bool operator()(const Interval& i1, const Interval& i2){
+            return i1.start<i2.start;
+        }    
+    };
+    
+    vector<Interval> merge(vector<Interval> &intervals) {
+        
+        if(intervals.size()==0||intervals.size()==1)
+            return intervals;
+            
+        sort(intervals.begin(),intervals.end(), 
+                [](const Interval& i1, const Interval& i2 ){return i1.start<i2.start;} //lamda
+            );
+        
+        vector<Interval> v;
+        
+        Interval curI = intervals[0];
+        
+        int index = 1;
+        
+        while(index<intervals.size()){
+            
+            Interval newI = intervals[index];
+            
+            if(newI.start<=curI.end){
+                curI.end = max(curI.end, newI.end);
+            }
+            else{
+                v.push_back(curI);
+                curI = newI;
+            }
+            
+            ++index;
+        }
+        
+        v.push_back(curI);
+        
+        return v;
+    }
+};
+*/
 
 
 
@@ -3561,7 +3876,10 @@ public:
 
 
 
-//-----------------------------
+
+******MergeKSortedLists.h******
+
+-----------------------------------------------
 
 /*
 Merge k sorted linked lists and return it as one sorted list. Analyze and describe its complexity.
@@ -3625,7 +3943,9 @@ public:
     }
 };
 
-//-----------------------------
+******MergeSortedArray.h******
+
+-----------------------------------------------
 
 /*
 Given two sorted integer arrays A and B, merge B into A as one sorted array.
@@ -3650,7 +3970,9 @@ public:
     }
 };
 
-//-----------------------------
+******MergeTwoSortedLists.h******
+
+-----------------------------------------------
 
 /*
 Merge two sorted linked lists and return it as a new list. The new list should be made by splicing together the nodes of the first two lists.
@@ -3688,7 +4010,9 @@ public:
     }
 };
 
-//-----------------------------
+******MinimumDepthOfBinaryTree.h******
+
+-----------------------------------------------
 
 /*
 Given a binary tree, find its minimum depth.
@@ -3744,7 +4068,9 @@ public:
     
 };
 
-//-----------------------------
+******MinimumPathSum.h******
+
+-----------------------------------------------
 
 /*
 Given a m x n grid filled with non-negative numbers, find a path from top left to bottom right which minimizes the sum of all numbers along its path.
@@ -3774,7 +4100,9 @@ public:
     }
 };
 
-//-----------------------------
+******MinimumWindowSubstring.h******
+
+-----------------------------------------------
 
 /*
 Given a string S and a string T, find the minimum window in S which will contain all the characters in T in complexity O(n).
@@ -3827,7 +4155,9 @@ public:
 };
 
 
-//-----------------------------
+******MultiplyStrings.h******
+
+-----------------------------------------------
 
 /*
 Given two numbers represented as strings, return multiplication of the numbers as a string.
@@ -3878,7 +4208,9 @@ public:
     
 };
 
-//-----------------------------
+******NQueens.h******
+
+-----------------------------------------------
 
 /*
 The n-queens puzzle is the problem of placing n queens on an n×n chessboard such that no two queens attack each other.
@@ -3948,7 +4280,9 @@ public:
     
 };
 
-//-----------------------------
+******NQueensII.h******
+
+-----------------------------------------------
 
 /*
 Follow up for N-Queens problem.
@@ -3983,7 +4317,9 @@ public:
     }
 };
 
-//-----------------------------
+******NextPermutation.h******
+
+-----------------------------------------------
 
 /*
 Implement next permutation, which rearranges numbers into the lexicographically next greater permutation of numbers.
@@ -4032,7 +4368,9 @@ public:
     
 };
 
-//-----------------------------
+******PalindromeNumber.h******
+
+-----------------------------------------------
 
 /*
 Determine whether an integer is a palindrome. Do this without extra space.
@@ -4041,6 +4379,7 @@ Determine whether an integer is a palindrome. Do this without extra space.
 class Solution {
 public:
 
+    
     bool isPalindrome(int x) {
         
         if(x<0)
@@ -4051,7 +4390,7 @@ public:
             
         int numDigits = (int)floor( log10(x) );
         
-        while(x>=10){
+        while(x!=0){
             
             int most = x / pow(10,numDigits) ;
             int least = x % 10;
@@ -4066,9 +4405,12 @@ public:
         return true;
     }
     
+    
 };
 
-//-----------------------------
+******PalindromePartitioning.h******
+
+-----------------------------------------------
 
 /*
 Given a string s, partition s such that every substring of the partition is a palindrome.
@@ -4173,7 +4515,9 @@ public:
 
 
 
-//-----------------------------
+******PalindromePartitioningII.h******
+
+-----------------------------------------------
 
 /*
 Given a string s, partition s such that every substring of the partition is a palindrome.
@@ -4213,7 +4557,9 @@ public:
 };
 
 
-//-----------------------------
+******PartitionList.h******
+
+-----------------------------------------------
 
 /*
 Given a linked list and a value x, partition it such that all nodes less than x come before nodes greater than or equal to x.
@@ -4257,7 +4603,9 @@ public:
     }
 };
 
-//-----------------------------
+******PascalTriangle.h******
+
+-----------------------------------------------
 
 /*
 Given numRows, generate the first numRows of Pascal's triangle.
@@ -4289,7 +4637,9 @@ public:
     }
 };
 
-//-----------------------------
+******PascalTriangleII.h******
+
+-----------------------------------------------
 
 /*
 Given an index k, return the kth row of the Pascal's triangle.
@@ -4316,7 +4666,9 @@ public:
     }
 };
 
-//-----------------------------
+******PathSum.h******
+
+-----------------------------------------------
 
 /*
 Given a binary tree and a sum, determine if the tree has a root-to-leaf path such that adding up all the values along the path equals the given sum.
@@ -4369,7 +4721,9 @@ public:
     }
 };
 
-//-----------------------------
+******PathSumII.h******
+
+-----------------------------------------------
 
 /*
 Given a binary tree and a sum, find all root-to-leaf paths where each path's sum equals the given sum.
@@ -4438,7 +4792,9 @@ public:
     
 };
 
-//-----------------------------
+******PermutationSequence.h******
+
+-----------------------------------------------
 
 /*
 The set [1,2,3,…,n] contains a total of n! unique permutations.
@@ -4551,7 +4907,9 @@ public:
     
 };
 
-//-----------------------------
+******Permutations.h******
+
+-----------------------------------------------
 
 /*
 Given a collection of numbers, return all possible permutations.
@@ -4590,9 +4948,31 @@ public:
         return retVV;
     }
     
+    /*
+    void permuteHepler(vector<int> &num , int level) {
+        if(level == num.size()){
+            retVV.push_back(num);
+            return;
+        }
+        
+        for(int i = level; i < num.size(); ++i){
+             swap(num[i],num[level]);
+             permuteHepler(num,level+1);
+             swap(num[i],num[level]);
+        }
+    }
+    
+    vector<vector<int> > permute(vector<int> &num) {
+ 
+        permuteHepler(num,0);
+        return retVV;
+    }
+    */
 };
 
-//-----------------------------
+******PermutationsII.h******
+
+-----------------------------------------------
 
 /*
 Given a collection of numbers that might contain duplicates, return all possible unique permutations.
@@ -4636,7 +5016,9 @@ public:
     }
 };
 
-//-----------------------------
+******PlusOne.h******
+
+-----------------------------------------------
 
 /*
 Given a number represented as an array of digits, plus one to the number.
@@ -4662,7 +5044,9 @@ public:
     
 };
 
-//-----------------------------
+******PopulatingNextRightPointersInEachNode.h******
+
+-----------------------------------------------
 
 /*
 Given a binary tree
@@ -4772,7 +5156,9 @@ public:
     }
 };
 
-//-----------------------------
+******PopulatingNextRightPointersInEachNodeII.h******
+
+-----------------------------------------------
 
 /*
 Follow up for problem "Populating Next Right Pointers in Each Node".
@@ -4810,8 +5196,13 @@ After calling your function, the tree should look like:
  
 class Solution {
 public:
-    void connect(TreeLinkNode *root) {
+     void connect(TreeLinkNode *root) {
+        connect2(root);
         
+    }
+    
+    //queue
+    void connect1(TreeLinkNode *root) {
         if(root==NULL)
             return;
         
@@ -4844,9 +5235,46 @@ public:
         
         }
     }
+    
+    //no queue
+    void connect2(TreeLinkNode *root) {
+        if(root==NULL)
+            return;
+        
+        //如果右孩子不为空，左孩子的next是右孩子。  
+        //反之，找root next的至少有一个孩子不为空的节点  
+        if (root->left != NULL) {  
+            if (root->right != NULL) {  
+                root->left->next = root->right;  
+            }  
+            else {  
+                TreeLinkNode* p = root->next;  
+                while (p != NULL && p->left == NULL && p->right == NULL)  
+                    p = p->next;  
+                if (p != NULL)  
+                    root->left->next = p->left == NULL ? p->right : p->left;  
+            }  
+        }  
+          
+        //右孩子的next 根节点至少有一个孩子不为空的next  
+        if (root->right != NULL) {  
+                TreeLinkNode* p = root->next;  
+                while (p != NULL && p->left == NULL && p->right == NULL)  
+                    p = p->next;  
+                if (p != NULL)  
+                    root->right->next = p->left == NULL ? p->right : p->left;  
+        }  
+        
+        connect(root->right);      
+        connect(root->left);  
+        
+    }
+    
 };
 
-//-----------------------------
+******PowXN.h******
+
+-----------------------------------------------
 
 /*
 Implement pow(x, n).
@@ -4869,7 +5297,9 @@ public:
     
 };
 
-//-----------------------------
+******RecoverBinarySearchTree.h******
+
+-----------------------------------------------
 
 /*
 Two elements of a binary search tree (BST) are swapped by mistake.
@@ -4944,7 +5374,9 @@ public:
 };
 };
 
-//-----------------------------
+******RegularExpressionMatching.h******
+
+-----------------------------------------------
 
 /*
 Implement regular expression matching with support for '.' and '*'.
@@ -4967,10 +5399,23 @@ isMatch("ab", ".*") → true
 isMatch("aab", "c*a*b") → true
 */
 
-class Solution {
+/*
+http://blog.csdn.net/lifajun90/article/details/10582733
+http://blog.csdn.net/a83610312/article/details/9750655
+
+
+*/
+ 
+ class Solution {
 public:
 
-   bool isMatch(const char *s, const char *p) {
+    bool isMatch (const char *s, const char *p) {
+    
+        return isMatch2(s,p);
+    }
+    
+    //recursion
+    bool isMatch1 (const char *s, const char *p) {
         assert(s && p);
         if (*p == '\0') return *s == '\0';
 
@@ -4984,49 +5429,40 @@ public:
             s++;
         }
         return isMatch(s, p+2);
-    };
+    }
     
-    bool isMatch1(const char *s, const char *p) {
+    //dp
+     bool isMatch2 (const char *s, const char *p) {
+        assert(s && p);
+        int ls = strlen(s);
+        int lp = strlen(p);
+        vector<vector<bool> > dp(ls+1,vector<bool>(lp+1,false) );
+        dp[0][0]=true;
+        for(int i = 1; i <=lp; ++i){
+            if(p[i-1]=='*') dp[0][i]=dp[0][i-2];
+        }
         
-        string str(s);
-        string pattern(p);
-        
-        isMatch1(str,pattern);
-    }
-
-    bool isMatch1(string s, string p){
-        
-            if( p=="" )
-                return s=="";
-        
-            if(p[1]!='*'){
-                if(s[0]==p[0]|| (p[0]=='.' && s!="") )
-                    return isMatch1(s.substr(1),p.substr(1));
-                return false;
-            }
-            else{
-                
-                if( isMatch1(s,p.substr(2)) )
-                    return true;
-                    
-                for(int i = 0; i<s.size(); ++i){
-                    if(s[i]==p[0]|| p[0]=='.'){
-                        if(isMatch1(s.substr(i+1),p.substr(2)))
-                            return true;
-                    }
-                    else{
-                        break;
-                    }
+        for(int i = 1; i <= ls; ++i){
+            for(int j = 1; j <= lp; ++j){
+                if(p[j-1]!='*'){
+                    dp[i][j]=dp[i-1][j-1]&&(s[i-1]==p[j-1]||p[j-1]=='.');
                 }
-                
-                return false;
+                //current char in pattern is *
+                else{
+                    dp[i][j]=dp[i][j-2] || dp[i][j-1] || (dp[i-1][j]&&(s[i-1]==p[j-2]||p[j-2]=='.')) ;
+                }
             }
+        }
         
-    }
+        return dp[ls][lp];
+        
+     } 
     
 };
 
-//-----------------------------
+******RemoveDuplicatesFromSortedArray.h******
+
+-----------------------------------------------
 
 /*
 Given a sorted array, remove the duplicates in place such that each element appear only once and return the new length.
@@ -5058,7 +5494,9 @@ public:
     }
 };
 
-//-----------------------------
+******RemoveDuplicatesFromSortedArrayII.h******
+
+-----------------------------------------------
 
 /*
 Follow up for "Remove Duplicates":
@@ -5099,7 +5537,9 @@ public:
     
 };
 
-//-----------------------------
+******RemoveDuplicatesFromSortedList.h******
+
+-----------------------------------------------
 
 /*
 Given a sorted linked list, delete all duplicates such that each element appear only once.
@@ -5165,7 +5605,9 @@ public:
     
 };
 
-//-----------------------------
+******RemoveDuplicatesFromSortedListII.h******
+
+-----------------------------------------------
 
 /*
 Given a sorted linked list, delete all nodes that have duplicate numbers, leaving only distinct numbers from the original list.
@@ -5290,7 +5732,9 @@ public:
   }
   */
 
-//-----------------------------
+******RemoveElement.h******
+
+-----------------------------------------------
 
 /*
 Given an array and a value, remove all instances of that value in place and return the new length.
@@ -5312,7 +5756,9 @@ public:
     
 };
 
-//-----------------------------
+******RemoveNthNodeFromEndOfList.h******
+
+-----------------------------------------------
 
 /*
 Given a linked list, remove the nth node from the end of list and return its head.
@@ -5362,7 +5808,9 @@ public:
 
 
 
-//-----------------------------
+******ReorderList.h******
+
+-----------------------------------------------
 
 /*
 Given a singly linked list L: L0→L1→…→Ln-1→Ln,
@@ -5442,7 +5890,9 @@ public:
 
 
 
-//-----------------------------
+******RestoreIPAddresses.h******
+
+-----------------------------------------------
 
 /*
 Given a string containing only digits, restore it by returning all possible valid IP address combinations.
@@ -5500,7 +5950,9 @@ public:
 
 
 
-//-----------------------------
+******ReverseInteger.h******
+
+-----------------------------------------------
 
 /*
 Reverse digits of an integer.
@@ -5531,7 +5983,9 @@ public:
     }
 };
 
-//-----------------------------
+******ReverseLinkedListII.h******
+
+-----------------------------------------------
 
 /*
 Reverse a linked list from position m to n. Do it in-place and in one-pass.
@@ -5605,7 +6059,9 @@ public:
     
 };
 
-//-----------------------------
+******ReverseNodesInKGroup.h******
+
+-----------------------------------------------
 
 /*
 Given a linked list, reverse the nodes of a linked list k at a time and return its modified list.
@@ -5679,7 +6135,9 @@ public:
     
 };
 
-//-----------------------------
+******RomanToInteger.h******
+
+-----------------------------------------------
 
 /*
 Given a roman numeral, convert it to an integer.
@@ -5711,7 +6169,9 @@ public:
     }
 };
 
-//-----------------------------
+******RotateImage.h******
+
+-----------------------------------------------
 
 /*
 You are given an n x n 2D matrix representing an image.
@@ -5765,7 +6225,9 @@ public:
     
 };
 
-//-----------------------------
+******RotateList.h******
+
+-----------------------------------------------
 
 /*
 Given a list, rotate the list to the right by k places, where k is non-negative.
@@ -5832,7 +6294,9 @@ public:
     
 };
 
-//-----------------------------
+******SameTree.h******
+
+-----------------------------------------------
 
 /*
 Given two binary trees, write a function to check if they are equal or not.
@@ -5865,7 +6329,9 @@ public:
     }
 };
 
-//-----------------------------
+******ScrambleString.h******
+
+-----------------------------------------------
 
 /*
 Given a string s1, we may represent it as a binary tree by partitioning it to two non-empty substrings recursively.
@@ -5976,7 +6442,9 @@ public:
     
 };
 
-//-----------------------------
+******SearchA2DMatrix.h******
+
+-----------------------------------------------
 
 /*
 Write an efficient algorithm that searches for a value in an m x n matrix. This matrix has the following properties:
@@ -6017,7 +6485,9 @@ public:
     }
 };
 
-//-----------------------------
+******SearchForARange.h******
+
+-----------------------------------------------
 
 /*
 Given a sorted array of integers, find the starting and ending position of a given target value.
@@ -6072,7 +6542,9 @@ public:
 
 
 
-//-----------------------------
+******SearchInRotatedSortedArray.h******
+
+-----------------------------------------------
 
 /*
 Suppose a sorted array is rotated at some pivot unknown to you beforehand.
@@ -6121,7 +6593,9 @@ public:
 
 };
 
-//-----------------------------
+******SearchInRotatedSortedArrayII.h******
+
+-----------------------------------------------
 
 /*
 Follow up for "Search in Rotated Sorted Array":
@@ -6142,7 +6616,9 @@ public:
     }
 };
 
-//-----------------------------
+******SearchInsertPosition.h******
+
+-----------------------------------------------
 
 /*
 Given a sorted array and a target value, return the index if the target is found. If not, return the index where it would be if it were inserted in order.
@@ -6186,7 +6662,9 @@ public:
     
 };
 
-//-----------------------------
+******SetMatrixZeros.h******
+
+-----------------------------------------------
 
 /*
 Given a m x n matrix, if an element is 0, set its entire row and column to 0. Do it in place.
@@ -6282,7 +6760,9 @@ public:
     
 };
 
-//-----------------------------
+******SimplifyPath.h******
+
+-----------------------------------------------
 
 /*
 Given an absolute path for a file (Unix-style), simplify it.
@@ -6336,7 +6816,9 @@ public:
     
 };
 
-//-----------------------------
+******SingleNumber.h******
+
+-----------------------------------------------
 
 /*
 Given an array of integers, every element appears twice except for one. Find that single one.
@@ -6357,7 +6839,9 @@ public:
     
 };
 
-//-----------------------------
+******SingleNumberII.h******
+
+-----------------------------------------------
 
 /*
 Given an array of integers, every element appears three times except for one. Find that single one.
@@ -6383,7 +6867,9 @@ public:
     
 };
 
-//-----------------------------
+******SortColors.h******
+
+-----------------------------------------------
 
 /*
 Given an array with n objects colored red, white or blue, sort them so that objects of the same color are adjacent, with the colors in the order red, white and blue.
@@ -6428,7 +6914,9 @@ public:
     
 };
 
-//-----------------------------
+******SortList.h******
+
+-----------------------------------------------
 
 /*
 Sort a linked list in O(n log n) time using constant space complexity.
@@ -6493,7 +6981,9 @@ public:
     }
 };
 
-//-----------------------------
+******SpiralMatrix.h******
+
+-----------------------------------------------
 
 /*
 Given a matrix of m x n elements (m rows, n columns), return all elements of the matrix in spiral order.
@@ -6557,7 +7047,9 @@ public:
     
 };
 
-//-----------------------------
+******SpiralMatrixII.h******
+
+-----------------------------------------------
 
 /*
 Given an integer n, generate a square matrix filled with elements from 1 to n2 in spiral order.
@@ -6620,7 +7112,9 @@ public:
     
 };
 
-//-----------------------------
+******SqrtX.h******
+
+-----------------------------------------------
 
 /*
 Implement int sqrt(int x).
@@ -6652,7 +7146,9 @@ public:
 
 //how about double sqrt(double x)
 
-//-----------------------------
+******Strstr.h******
+
+-----------------------------------------------
 
 /*
 Implement strStr().
@@ -6718,49 +7214,38 @@ public:
     */
     
     // Knuth-Morris-Pratt Algorithm (KMP), takes O(n+m)
-    char * strStr3(char * haystack, int n, char * needle, int m) {
-        vector<int> fs = build(needle, m);
+    char *strStr(char *haystack, char *needle) {
+        if (haystack == NULL || needle == NULL) return NULL;
+        int N = strlen(haystack);
+        int M = strlen(needle);
+        if(M==0) return haystack;
+        vector<int> overlay(M,-1);
+        //initialize overlay array
+        for(int i = 1; i < M; ++i){
+            int pre = overlay[i-1];
+            while(pre>=0&&needle[pre+1]!=needle[i])
+                pre=overlay[pre];
+            if(needle[pre+1]==needle[i]) overlay[i]=pre+1;
+        }
+        //search
         int i = 0, j = 0;
-        int step = 10000;
-        while (j < n) {
-            if (j == n) break;
-            if (haystack[j] == needle[i]) {
-                i++;
-                j++;
-                if (i == m) return haystack+j-m;
+        while(i<N){
+            if(haystack[i]==needle[j]){
+                ++i; ++j;
+                if(j==M) return haystack+i-M;
             }
-            else if (i > 0) i = fs[i];
-            else j++;
-            step--;
-            if (step == 0) break;
+            else{
+                if(j==0) ++i;
+                else j = overlay[j-1] + 1;
+            }
         }
         return NULL;
     }
-
-    vector<int> build(char * needle, int m) {
-        vector<int> fs(m+1, 0);
-        for (int i = 2; i <= m; i++) {
-            int j = fs[i-1];
-            while (true) {
-                if (needle[j] == needle[i-1]) {
-                    fs[i] = j+1;
-                    break;
-                }
-
-                if (j == 0) {
-                    fs[i] = 0;
-                    break;
-                }
-
-                j = fs[j];
-            }
-        }
-
-        return fs;
-    }
 };
 
-//-----------------------------
+******SubSets.h******
+
+-----------------------------------------------
 
 /*
 Given a set of distinct integers, S, return all possible subsets.
@@ -6807,9 +7292,29 @@ public:
         return vv;
     }
 
+/*
+void subsets(vector<int> &S, int index, vector<int>& v, vector<vector<int> >& vv) {
+
+        if(index==S.size()) 
+        {
+            vv.push_back(v);
+            return;
+        }
+
+    v.push_back(S[index]);
+    subsets(S,index+1,v,vv);
+    v.pop_back();
+      
+    subsets(S,index+1,v,vv);
+
+  }
+
+*/
 };
 
-//-----------------------------
+******SubSetsII.h******
+
+-----------------------------------------------
 
 /*
 Given a collection of integers that might contain duplicates, S, return all possible subsets.
@@ -6862,7 +7367,9 @@ public:
     }
 };
 
-//-----------------------------
+******SubstringWithConcatenationOfAllWords.h******
+
+-----------------------------------------------
 
 /*
 You are given a string, S, and a list of words, L, that are all of the same length. Find all starting indices of substring(s) in S that is a concatenation of each word in L exactly once and without any intervening characters.
@@ -6917,7 +7424,9 @@ public:
     
 };
 
-//-----------------------------
+******SudokuSolver.h******
+
+-----------------------------------------------
 
 /*
 Write a program to solve a Sudoku puzzle by filling the empty cells.
@@ -6976,7 +7485,9 @@ public:
     }
 };
 
-//-----------------------------
+******SumRootToLeafNumbers.h******
+
+-----------------------------------------------
 
 /*
 Given a binary tree containing digits from 0-9 only, each root-to-leaf path could represent a number.
@@ -7066,7 +7577,9 @@ public:
     }
 };
 
-//-----------------------------
+******SurroundedRegions.h******
+
+-----------------------------------------------
 
 /*
 Given a 2D board containing 'X' and 'O', capture all regions surrounded by 'X'.
@@ -7194,7 +7707,9 @@ public:
 	*/
 };
 
-//-----------------------------
+******SwapNodesInPairs.h******
+
+-----------------------------------------------
 
 /*
 Given a linked list, swap every two adjacent nodes and return its head.
@@ -7235,7 +7750,9 @@ public:
     }
 };
 
-//-----------------------------
+******SymmetricTree.h******
+
+-----------------------------------------------
 
 /*
 Given a binary tree, check whether it is a mirror of itself (ie, symmetric around its center).
@@ -7359,7 +7876,9 @@ public:
 
 
 
-//-----------------------------
+******TextJustification.h******
+
+-----------------------------------------------
 
 /*
 Text Justification
@@ -7455,7 +7974,9 @@ public:
     }
 };
 
-//-----------------------------
+******TrappingRainWater.h******
+
+-----------------------------------------------
 
 /*
 Given n non-negative integers representing an elevation map where the width of each bar is 1, compute how much water it is able to trap after raining.
@@ -7497,7 +8018,9 @@ public:
     }
 };
 
-//-----------------------------
+******Triangle.h******
+
+-----------------------------------------------
 
 /*
 Given a triangle, find the minimum path sum from top to bottom. Each step you may move to adjacent numbers on the row below.
@@ -7535,7 +8058,9 @@ public:
     
 };
 
-//-----------------------------
+******UniqueBinarySearchTrees.h******
+
+-----------------------------------------------
 
 /*
 Given n, how many structurally unique BST's (binary search trees) that store values 1...n?
@@ -7576,7 +8101,9 @@ public:
     }
 };
 
-//-----------------------------
+******UniqueBinarySearchTreesII.h******
+
+-----------------------------------------------
 
 /*
 Given n, generate all structurally unique BST's (binary search trees) that store values 1...n.
@@ -7659,7 +8186,9 @@ public:
     
 };
 
-//-----------------------------
+******UniquePaths.h******
+
+-----------------------------------------------
 
 /*
 A robot is located at the top-left corner of a m x n grid (marked 'Start' in the diagram below).
@@ -7697,7 +8226,9 @@ public:
     }
 };
 
-//-----------------------------
+******UniquePathsII.h******
+
+-----------------------------------------------
 
 /*
 Follow up for "Unique Paths":
@@ -7749,7 +8280,9 @@ public:
     }
 };
 
-//-----------------------------
+******ValidNumber.h******
+
+-----------------------------------------------
 
 /*
 Validate if a given string is numeric.
@@ -7846,7 +8379,9 @@ public:
 	
 };
 
-//-----------------------------
+******ValidPalindrome.h******
+
+-----------------------------------------------
 
 /*
 Given a string, determine if it is a palindrome, considering only alphanumeric characters and ignoring cases.
@@ -7876,7 +8411,9 @@ public:
     }
 };
 
-//-----------------------------
+******ValidParentheses.h******
+
+-----------------------------------------------
 
 /*
 Given a string containing just the characters '(', ')', '{', '}', '[' and ']', determine if the input string is valid.
@@ -7927,7 +8464,9 @@ public:
     }
 };
 
-//-----------------------------
+******ValidSudoku.h******
+
+-----------------------------------------------
 
 /*
 Determine if a Sudoku is valid, according to: Sudoku Puzzles - The Rules.
@@ -7989,7 +8528,9 @@ public:
     }
 };
 
-//-----------------------------
+******ValidateBinarySearchTree.h******
+
+-----------------------------------------------
 
 /*
 Given a binary tree, determine if it is a valid binary search tree (BST).
@@ -8034,7 +8575,9 @@ public:
     
 };
 
-//-----------------------------
+******WildcardMatching.h******
+
+-----------------------------------------------
 
 /*
 Implement wildcard pattern matching with support for '?' and '*'.
@@ -8095,31 +8638,95 @@ check the rest element in p, if all are *, true, else false;
     
 //Timeout, so many recursion even if optimized
 /*
+    http://blog.csdn.net/a83610312/article/details/9750655
+
+    class Solution {
+public:
+
     bool isMatch(const char *s, const char *p) {
-        if (*s == '\0') {
-            if (*p == '\0') return true;
-            if (*p == '*') return isMatch(s,p+1);
-            return false;
+        
+        return isMatch1(s,p);
+    }
+    
+    //greedy
+    bool isMatch1(const char *s, const char *p) {
+        assert(s && p);
+        const char* star=NULL;
+        const char* saveS=NULL;
+        while(*s){
+            if(*p==*s||*p=='?'){ ++s;++p; }
+            else if( *p=='*'){ star=p;saveS=s;++p;}
+            else if(star){ p=star;++p;s=saveS;++saveS; }
+            else{ return false;}
         }
-        if (*p == '\0') return false;
-        if (*p == '?' || *p == *s) return isMatch(s+1, p+1);
-        if (*p=='*'){ 
-            //advance * as much as possible
-            while(*p=='*')
-                ++p;
-            if(*p=='\0')
-                return true;
-            --p;
-            return isMatch(s+1,p) || isMatch(s, p+1);
+        while(*p=='*') ++p;
+        return *p==0;
+    }
+    
+     //dp, exceed memory limit
+     bool isMatch2 (const char *s, const char *p) {
+        assert(s && p);
+        int ls = strlen(s);
+        int lp = strlen(p);
+        vector<vector<bool> > dp(ls+1,vector<bool>(lp+1,false) );
+        dp[0][0]=true;
+        for(int i = 1; i <=lp; ++i){
+            if(p[i-1]=='*') dp[0][i]=dp[0][i-1];
         }
         
-        return false;
-    }
+        for(int i = 1; i <= ls; ++i){
+            for(int j = 1; j <= lp; ++j){
+                if(p[j-1]!='*'){
+                    dp[i][j]=dp[i-1][j-1]&&(s[i-1]==p[j-1]||p[j-1]=='?');
+                }
+                //current char in pattern is *
+                else{
+                    dp[i][j]=dp[i][j-1] || dp[i-1][j-1] || dp[i-1][j]  ;
+                }
+            }
+        }
+        
+        return dp[ls][lp];
+     } 
+     
+     //dp, only use two rows
+     bool isMatch3 (const char *s, const char *p) {
+        assert(s && p);
+        int ls = strlen(s);
+        int lp = strlen(p);
+        vector<vector<bool> > dp(2,vector<bool>(lp+1,false) );
+        dp[0][0]=true;
+        for(int i = 1; i <=lp; ++i){
+            if(p[i-1]=='*') dp[0][i]=dp[0][i-1];
+        }
+        
+        for(int i = 1; i <= ls; ++i){
+            int curRow=i%2;  
+            int preRow=(i+1)%2;
+            for(int j = 1; j <= lp; ++j){
+                if(p[j-1]!='*'){
+                    dp[curRow][j]=dp[preRow][j-1]&&(s[i-1]==p[j-1]||p[j-1]=='?');
+                }
+                //current char in pattern is *
+                else{
+                    dp[curRow][j]=dp[curRow][j-1] || dp[preRow][j-1] || dp[preRow][j]  ;
+                }
+            }
+        }
+        
+        return dp[ls%2][lp];
+     } 
+     
+};
 */
+
+
 
 };
 
-//-----------------------------
+******WordBreak.h******
+
+-----------------------------------------------
 
 /*
 Given a string s and a dictionary of words dict, determine if s can be segmented into a space-separated sequence of one or more dictionary words.
@@ -8175,7 +8782,9 @@ public:
 	*/
 };
 
-//-----------------------------
+******WordBreakII.h******
+
+-----------------------------------------------
 
 /*
 Given a string s and a dictionary of words dict, add spaces in s to construct a sentence where each word is a valid dictionary word.
@@ -8195,6 +8804,7 @@ public:
 class Solution {
 public:
 
+    /*bottom-up DP*/
     vector<string> wordBreak(string s, unordered_set<string> &dict) {
 
         if(s==""||dict.size()==0)
@@ -8269,9 +8879,55 @@ public:
         return res;
     }
  */   
+
+    /* Top-down DP
+class Solution {
+public:
+    unordered_map<string , pair<bool,vector<string> > > hash;
+    
+    bool _wordBreak(string s, unordered_set<string> &dict, vector<string>* v){
+        if(s=="") return true;
+        if(hash.count(s)){
+            if(hash[s].first==false) return false;
+            else{
+                copy(hash[s].second.begin(),hash[s].second.end(),back_inserter(*v));
+                return true;
+            }
+        }
+        
+        bool ok=false;
+        for(int i = 1; i < s.size(); ++i){
+            string pre = s.substr(0,i);
+            string post = s.substr(i);
+            vector<string> subV;
+            if(dict.count(pre)&&_wordBreak(post,dict,&subV)){
+                for(int j = 0; j < subV.size(); ++j){
+                    v->push_back(pre+" "+subV[j]);
+                }
+                ok=true;
+            }
+        }
+        if(dict.count(s)){ v->push_back(s); ok=true;}
+        
+        hash[s] = pair<bool, vector<string> >(ok,*v);
+
+        return ok;
+    }
+    
+    vector<string> wordBreak(string s, unordered_set<string> &dict) {
+        vector<string> v;
+        if(s==""){ return v;}
+        _wordBreak(s,dict,&v);
+        return v;
+    }
+    
+};
+    */
 };
 
-//-----------------------------
+******WordLadder.h******
+
+-----------------------------------------------
 
 /*
 Given two words (start and end), and a dictionary, find the length of shortest transformation sequence from start to end, such that:
@@ -8396,7 +9052,9 @@ public:
     
 };
 
-//-----------------------------
+******WordLadderII.h******
+
+-----------------------------------------------
 
 /*
 Given two words (start and end), and a dictionary, find all shortest transformation sequence(s) from start to end, such that:
@@ -8493,7 +9151,9 @@ public:
 
 
 
-//-----------------------------
+******WordSearch.h******
+
+-----------------------------------------------
 
 /*
 Given a 2D board and a word, find if the word exists in the grid.
@@ -8548,7 +9208,9 @@ public:
     
 };
 
-//-----------------------------
+******ZigzagConversion.h******
+
+-----------------------------------------------
 
 /*
 The string "PAYPALISHIRING" is written in a zigzag pattern on a given number of rows like this: (you may want to display this pattern in a fixed font for better legibility)
@@ -8594,6 +9256,4 @@ public:
         return res;
     }
 };
-
-//-----------------------------
 

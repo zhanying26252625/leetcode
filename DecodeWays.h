@@ -30,5 +30,23 @@ public:
         
         return ways[s.size()];
     }
+
+    /*
+    int numDecodings(string s) {
+        if(s==""||s[0]=='0')
+            return 0;
+        int f0 = 1;
+        int f1 = 1;
+        for(int i = 1; i < s.size(); ++i){
+            int f2 = 0;
+            if(s[i]>'0') f2 += f1;
+            if(s[i-1]=='1'||(s[i-1]=='2'&&s[i]<='6')) f2 += f0;
+            f0 = f1;
+            f1 = f2;
+        }
+        
+        return f1;
+    }
+    */
     
 };

@@ -35,4 +35,24 @@ public:
         return retVV;
     }
     
+    /*
+    void permuteHepler(vector<int> &num , int level) {
+        if(level == num.size()){
+            retVV.push_back(num);
+            return;
+        }
+        
+        for(int i = level; i < num.size(); ++i){
+             swap(num[i],num[level]);
+             permuteHepler(num,level+1);
+             swap(num[i],num[level]);
+        }
+    }
+    
+    vector<vector<int> > permute(vector<int> &num) {
+ 
+        permuteHepler(num,0);
+        return retVV;
+    }
+    */
 };

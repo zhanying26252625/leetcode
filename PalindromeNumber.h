@@ -5,6 +5,7 @@ Determine whether an integer is a palindrome. Do this without extra space.
 class Solution {
 public:
 
+    
     bool isPalindrome(int x) {
         
         if(x<0)
@@ -15,7 +16,7 @@ public:
             
         int numDigits = (int)floor( log10(x) );
         
-        while(x>=10){
+        while(x!=0){
             
             int most = x / pow(10,numDigits) ;
             int least = x % 10;
@@ -29,5 +30,6 @@ public:
         
         return true;
     }
+    
     
 };

@@ -92,4 +92,54 @@ public:
 
         return s.substr(res / 2 - (dp[res] - 1) / 2, dp[res] - 1);
     }
+
+    /*
+    //manacher's O(N)  my implementation
+    string longestPalindrome2(string s) {
+        //pad the origin string
+        stringstream ss;
+        ss<<"^#";
+        for(int i =0 ; i<s.size(); ++i)
+            ss<<s[i]<<"#";
+        ss<<"$";
+        string text = ss.str();
+
+        //iteratively find longest substring
+        vector<int> lens(text.size(),1);
+        int c = 1; //center
+        int r = 1; //right-side
+        for(int i = 2 ; i < text.size(); ++i){
+            int j = 2*c-i;
+            int l = min(lens[j],max(0,r-i));
+            while(i-l>=0&&i+l<text.size()&&text[i-l]==text[i+l]) ++l;
+            lens[i] = l;
+
+            if(i+l>=c){
+                c = i;
+                r = i + l - 1;
+            }
+        }
+
+        //find max len
+        int radius = 0;
+        int center = 0;
+        for(int i = 0 ; i < lens.size(); ++i){
+            if(lens[i] > radius){
+                center = i;
+                radius = lens[i];
+            }
+        }
+        
+        //trim 
+        string subs = text.substr(center-radius+1,radius*2-1);
+        //cout << subs << endl;
+        stringstream ss2;
+        for(int i =0 ; i<subs.size(); ++i){
+            if(subs[i]!='#'&&subs[i]!='^'&&subs[i]!='$') ss2<<subs[i];  
+        }
+        string retStr = ss2.str();
+        return retStr;
+    }
+
+    */
 };

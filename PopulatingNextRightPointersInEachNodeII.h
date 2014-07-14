@@ -34,8 +34,13 @@ After calling your function, the tree should look like:
  
 class Solution {
 public:
-    void connect(TreeLinkNode *root) {
+     void connect(TreeLinkNode *root) {
+        connect2(root);
         
+    }
+    
+    //queue
+    void connect1(TreeLinkNode *root) {
         if(root==NULL)
             return;
         
@@ -68,4 +73,39 @@ public:
         
         }
     }
+    
+    //no queue
+    void connect2(TreeLinkNode *root) {
+        if(root==NULL)
+            return;
+        
+        //如果右孩子不为空，左孩子的next是右孩子。  
+        //反之，找root next的至少有一个孩子不为空的节点  
+        if (root->left != NULL) {  
+            if (root->right != NULL) {  
+                root->left->next = root->right;  
+            }  
+            else {  
+                TreeLinkNode* p = root->next;  
+                while (p != NULL && p->left == NULL && p->right == NULL)  
+                    p = p->next;  
+                if (p != NULL)  
+                    root->left->next = p->left == NULL ? p->right : p->left;  
+            }  
+        }  
+          
+        //右孩子的next 根节点至少有一个孩子不为空的next  
+        if (root->right != NULL) {  
+                TreeLinkNode* p = root->next;  
+                while (p != NULL && p->left == NULL && p->right == NULL)  
+                    p = p->next;  
+                if (p != NULL)  
+                    root->right->next = p->left == NULL ? p->right : p->left;  
+        }  
+        
+        connect(root->right);      
+        connect(root->left);  
+        
+    }
+    
 };

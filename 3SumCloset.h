@@ -18,7 +18,7 @@ public:
             while (i < j) {
                 int sum = num[i]+num[j]+num[k];
                 if (sum == target) return sum;
-                if (abs(sum-target) < abs(res-target)) res = sum;
+                if (res==INT_MAX||abs(sum-target) < abs(res-target)) res = sum;
                 if (sum > target) j--;
                 else i++;
             }

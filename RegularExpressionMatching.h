@@ -19,10 +19,23 @@ isMatch("ab", ".*") → true
 isMatch("aab", "c*a*b") → true
 */
 
-class Solution {
+/*
+http://blog.csdn.net/lifajun90/article/details/10582733
+http://blog.csdn.net/a83610312/article/details/9750655
+
+
+*/
+ 
+ class Solution {
 public:
 
-   bool isMatch(const char *s, const char *p) {
+    bool isMatch (const char *s, const char *p) {
+    
+        return isMatch2(s,p);
+    }
+    
+    //recursion
+    bool isMatch1 (const char *s, const char *p) {
         assert(s && p);
         if (*p == '\0') return *s == '\0';
 
@@ -36,44 +49,33 @@ public:
             s++;
         }
         return isMatch(s, p+2);
-    };
+    }
     
-    bool isMatch1(const char *s, const char *p) {
+    //dp
+     bool isMatch2 (const char *s, const char *p) {
+        assert(s && p);
+        int ls = strlen(s);
+        int lp = strlen(p);
+        vector<vector<bool> > dp(ls+1,vector<bool>(lp+1,false) );
+        dp[0][0]=true;
+        for(int i = 1; i <=lp; ++i){
+            if(p[i-1]=='*') dp[0][i]=dp[0][i-2];
+        }
         
-        string str(s);
-        string pattern(p);
-        
-        isMatch1(str,pattern);
-    }
-
-    bool isMatch1(string s, string p){
-        
-            if( p=="" )
-                return s=="";
-        
-            if(p[1]!='*'){
-                if(s[0]==p[0]|| (p[0]=='.' && s!="") )
-                    return isMatch1(s.substr(1),p.substr(1));
-                return false;
-            }
-            else{
-                
-                if( isMatch1(s,p.substr(2)) )
-                    return true;
-                    
-                for(int i = 0; i<s.size(); ++i){
-                    if(s[i]==p[0]|| p[0]=='.'){
-                        if(isMatch1(s.substr(i+1),p.substr(2)))
-                            return true;
-                    }
-                    else{
-                        break;
-                    }
+        for(int i = 1; i <= ls; ++i){
+            for(int j = 1; j <= lp; ++j){
+                if(p[j-1]!='*'){
+                    dp[i][j]=dp[i-1][j-1]&&(s[i-1]==p[j-1]||p[j-1]=='.');
                 }
-                
-                return false;
+                //current char in pattern is *
+                else{
+                    dp[i][j]=dp[i][j-2] || dp[i][j-1] || (dp[i-1][j]&&(s[i-1]==p[j-2]||p[j-2]=='.')) ;
+                }
             }
+        }
         
-    }
+        return dp[ls][lp];
+        
+     } 
     
 };

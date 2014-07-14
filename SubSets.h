@@ -43,4 +43,22 @@ public:
         return vv;
     }
 
+/*
+void subsets(vector<int> &S, int index, vector<int>& v, vector<vector<int> >& vv) {
+
+        if(index==S.size()) 
+        {
+            vv.push_back(v);
+            return;
+        }
+
+    v.push_back(S[index]);
+    subsets(S,index+1,v,vv);
+    v.pop_back();
+      
+    subsets(S,index+1,v,vv);
+
+  }
+
+*/
 };

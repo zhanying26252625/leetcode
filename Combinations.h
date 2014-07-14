@@ -68,6 +68,37 @@ public:
             
         combine(vv,cur,index+1,v,k);
     }
+
+    int nextSameBits(int bits){
+        int firstBit = bits&(~(bits-1));
+        int big = firstBit + bits;
+        int remains = ((big^bits)>>2) / firstBit;
+        return big + remains;
+    }
+
+    //iteratively by using bits manipulation
+    void combine3(vector<vector<int> >* vv , vector<int>& cur,int k){
+        int begin = 0;
+        int end = 0;
+        for(int i = 0 ; i < k ; ++i ) begin |= 1<<i; 
+        end = begin << (cur.size()-k) ;
+        
+        while(begin <= end){
+            int bits = begin;
+ 
+            vector<int> v;
+            while(bits){
+                int i = 0; 
+                while( 1<<i != (bits&(~(bits-1))) ) ++i;            
+                bits = bits & (bits-1);
+                v.push_back(cur[i]);
+            }
+            vv->push_back(v);
+            
+            begin = nextSameBits(begin);
+        }
+ 
+    }
     
 };
 

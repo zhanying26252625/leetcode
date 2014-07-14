@@ -16,6 +16,7 @@ public:
 class Solution {
 public:
 
+    /*bottom-up DP*/
     vector<string> wordBreak(string s, unordered_set<string> &dict) {
 
         if(s==""||dict.size()==0)
@@ -90,4 +91,48 @@ public:
         return res;
     }
  */   
+
+    /* Top-down DP
+class Solution {
+public:
+    unordered_map<string , pair<bool,vector<string> > > hash;
+    
+    bool _wordBreak(string s, unordered_set<string> &dict, vector<string>* v){
+        if(s=="") return true;
+        if(hash.count(s)){
+            if(hash[s].first==false) return false;
+            else{
+                copy(hash[s].second.begin(),hash[s].second.end(),back_inserter(*v));
+                return true;
+            }
+        }
+        
+        bool ok=false;
+        for(int i = 1; i < s.size(); ++i){
+            string pre = s.substr(0,i);
+            string post = s.substr(i);
+            vector<string> subV;
+            if(dict.count(pre)&&_wordBreak(post,dict,&subV)){
+                for(int j = 0; j < subV.size(); ++j){
+                    v->push_back(pre+" "+subV[j]);
+                }
+                ok=true;
+            }
+        }
+        if(dict.count(s)){ v->push_back(s); ok=true;}
+        
+        hash[s] = pair<bool, vector<string> >(ok,*v);
+
+        return ok;
+    }
+    
+    vector<string> wordBreak(string s, unordered_set<string> &dict) {
+        vector<string> v;
+        if(s==""){ return v;}
+        _wordBreak(s,dict,&v);
+        return v;
+    }
+    
+};
+    */
 };

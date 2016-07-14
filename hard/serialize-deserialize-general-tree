@@ -1,0 +1,55 @@
+/*
+ http://www.geeksforgeeks.org/serialize-deserialize-binary-tree/
+*/
+
+ 
+ // general tree
+#include <iostream>
+#include <string>
+#include <vector>
+using namespace std;
+
+struct Node {
+    Node(char cc): c(cc){
+    }
+    char c;
+    vector<Node*> children;  
+};
+
+void printTree(Node* root){
+    if(root){
+        cout << root->c <<" ";
+    } 
+    for(auto& child : root->children){
+        printTree(child);
+    }
+    return;
+}
+
+const char Marker = ')';
+
+string str("abd)e)f))c)g1)2)3))h))");
+
+void resolve(const string& str, int* index, Node* root){
+    if(*index >= str.size() || str[*index] == Marker){
+        *index = *index + 1;
+        return;
+    }
+    Node* me = new Node(str[*index]);
+    root->children.push_back(me);
+    *index = *index + 1;
+    while (str[*index] != Marker){
+        resolve(str, index, me);
+    }
+    *index = *index + 1;
+    return;
+}
+
+int main()
+{
+    Node* root = new Node('O');
+    int index = 0;
+    resolve(str, &index, root);
+    printTree(root);
+  
+}
